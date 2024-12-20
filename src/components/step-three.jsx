@@ -6,6 +6,8 @@ import { useState } from "react";
 
 export function FormThree({setFormState,onChange,formInfo,errorMsg}){
     const [imageDrop, setImageDrop] = useState(null);
+    const date = new Date();
+    const currentDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
     let buttonStyle = "self-center bg-[#D6D8DB] text-[#A9ACAF] w-[65%] h-[44px] rounded-lg";
     function handleNext(){
         if(formInfo.birthDay?.length > 1 && imageDrop !== null){
@@ -39,6 +41,7 @@ export function FormThree({setFormState,onChange,formInfo,errorMsg}){
             <input 
                 id="birthDay"
                 type="date" 
+                max={currentDate}
                 onChange={onChange}
                 className="border border-[#CBD5E1] rounded-lg w-full h-[44px] focus:outline-none focus:border-[#0CA5E9] p-3"/>
             {validation(errorMsg.birthDay)}
